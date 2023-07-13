@@ -1,0 +1,80 @@
+.purchase-header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    width: 530px; 
+    max-width: 800px;
+}
+
+.admin-view {
+    height: 90vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    background-color: rgb(227, 238, 238);
+}
+
+.table {
+    height: auto;
+    border: 1px solid black;
+    border-radius: 5px; 
+}
+
+.tab-pane-container {
+    border: 1px solid black;
+    border-radius: 10px;
+    background-color: rgb(255, 255, 255);
+    height: fit-content;
+    width: 90vw;
+    padding: 30px;
+    margin: 30px;
+}
+
+.purchases {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    margin-bottom: 30px;
+}
+
+.last-charge-when {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 350px;
+}
+
+.config-title {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.product-list {
+    display: flex;
+    flex-direction: column;
+    border-radius: 5px;
+    padding: 24px;
+    max-height: 50vh;
+    overflow: auto;
+    border: 2px solid black;
+    overflow: auto;
+}
+
+.product-remover {
+    background-color: rgb(137, 0, 0);
+}
+
+.modal-input {
+    height: 20px; 
+    width: 300px;
+    padding: 5px;
+    font-size: 15px;
+    border-radius: 5px;
+    background-color: rgb(255, 255, 255);
+}

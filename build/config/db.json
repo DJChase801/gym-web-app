@@ -1,0 +1,16 @@
+{
+    "local": {
+        "username": "postgres",
+        "password": "4674537Pn!",
+        "database": "ute_db",
+        "host": "localhost",
+        "dialect": "postgres"
+    },
+    "production": {
+        "username": "danchase801",
+        "password": "4674537Pn!",
+        "database": "postgres",
+        "host": "ute-cx-postgres.cxwibztx6pcq.us-west-2.rds.amazonaws.com",
+        "dialect": "postgres"
+    }
+}
