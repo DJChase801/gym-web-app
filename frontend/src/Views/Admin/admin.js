@@ -24,13 +24,13 @@ function Admin() {
 
     const setAllData = async () => {
 
-        await axios.get('http://localhost:5000/api/get-all-products').then((res) => {
+        await axios.get('http://34.226.247.19:5000/api/get-all-products').then((res) => {
             if (res.data.products) {
                 setProducts(res.data.products);
             }
         });
         // send the start date end end date as a query param
-        await axios.get(`http://localhost:5000/api/get-all-purchases?startDate=${lastChargeDate}`).then((res) => {
+        await axios.get(`http://34.226.247.19:5000/api/get-all-purchases?startDate=${lastChargeDate}`).then((res) => {
             if (res.data.purchases) {
                 const tablePurchases = res.data.purchases.map((purchase) => {
                     return {
@@ -45,7 +45,7 @@ function Admin() {
             }
         });
 
-        await axios.get('http://localhost:5000/api/get-all-members').then((res) => {
+        await axios.get('http://34.226.247.19:5000/api/get-all-members').then((res) => {
             if (res.data.data.members) {
                 const membersList = res.data.data.members.map((member) => {
                     return {
@@ -65,7 +65,7 @@ function Admin() {
             const formatStartDate = new Date(startDate).toLocaleDateString() + ' 00:00:00.000-06'; // minus 6 hours because mountain time
             const formatEndDate = new Date(endDate).toLocaleDateString() + ' 00:00:00.000-06';
             // get request that sends the start date and end date as query params
-            await axios.get(`http://localhost:5000/api/get-all-purchases?startDate=${formatStartDate}&endDate=${formatEndDate}`).then((res) => {
+            await axios.get(`http://34.226.247.19:5000/api/get-all-purchases?startDate=${formatStartDate}&endDate=${formatEndDate}`).then((res) => {
                 if (res.data.purchases) {
                     setFilteredPurchases([]);
                     const tablePurchases = res.data.purchases.map((purchase) => {
@@ -113,7 +113,7 @@ function Admin() {
     }
 
     const addStagedProduct = () => {
-        axios.post('http://localhost:5000/api/add-product', {
+        axios.post('http://34.226.247.19:5000/api/add-product', {
             product: {
                 name: stagedProductName,
                 price: stagedProductPrice,
@@ -131,7 +131,7 @@ function Admin() {
     }
 
     const removeProduct = (product) => {
-        axios.delete('http://localhost:5000/api/remove-product', {
+        axios.delete('http://34.226.247.19:5000/api/remove-product', {
             data: {
                 product_id: product.product_id,
             }
@@ -143,13 +143,13 @@ function Admin() {
     }
 
     const removeMember = async (member) => {
-        await axios.delete('http://localhost:5000/api/remove-member', {
+        await axios.delete('http://34.226.247.19:5000/api/remove-member', {
             data: {
                 member_id: member.member_id,
             }
         }).then(async (res) => {
             if (res.data.success) {
-                await axios.get('http://localhost:5000/api/get-all-members').then((res) => {
+                await axios.get('http://34.226.247.19:5000/api/get-all-members').then((res) => {
                     if (res.data.data.members) {
                         const membersList = res.data.data.members.map((member) => {
                             return {

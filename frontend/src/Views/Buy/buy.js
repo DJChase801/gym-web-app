@@ -20,19 +20,19 @@ function Buy() {
     const [cartTotal, setCartTotal] = useState(0.00)
 
     useEffect(() => {
-        axios.get('http://localhost:5000/api/get-all-members').then((res) => {
+        axios.get('http://34.226.247.19:5000/api/get-all-members').then((res) => {
             if (res.data.data.members) {
                 setListOptions(res.data.data.members);
             }
         });
 
-        axios.get('http://localhost:5000/api/get-gym-favs').then((res) => {
+        axios.get('http://34.226.247.19:5000/api/get-gym-favs').then((res) => {
             if (res.data.gymFavs) {
                 setFavProducts(res.data.gymFavs);
             }
         });
 
-        axios.get('http://localhost:5000/api/get-all-products').then((res) => {
+        axios.get('http://34.226.247.19:5000/api/get-all-products').then((res) => {
             if (res.data.products) {
                 setProducts(res.data.products);
                 setViewableProducts(res.data.products);
@@ -89,7 +89,7 @@ function Buy() {
             }
 
             if (member) {
-                await axios.post('http://localhost:5000/api/accept-purchase', {
+                await axios.post('http://34.226.247.19:5000/api/accept-purchase', {
                     member,
                     products: cartProducts,
                     cartTotal,
@@ -103,13 +103,13 @@ function Buy() {
                     }
                 })
 
-                await axios.get('http://localhost:5000/api/get-all-members').then((res) => {
+                await axios.get('http://34.226.247.19:5000/api/get-all-members').then((res) => {
                     if (res.data.data.members) {
                         setListOptions(res.data.data.members);
                     }
                 });
 
-                await axios.get('http://localhost:5000/api/get-gym-favs').then((res) => {
+                await axios.get('http://34.226.247.19:5000/api/get-gym-favs').then((res) => {
                     if (res.data.gymFavs) {
                         setFavProducts(res.data.gymFavs);
                     }
