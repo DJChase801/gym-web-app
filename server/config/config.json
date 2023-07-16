@@ -1,12 +1,12 @@
 {
-	"development": {
+	"production": {
 		"username": "postgres",
 		"password": "4674537Pn!",
 		"database": "ute_db",
 		"host": "localhost",
 		"dialect": "postgres"
 	},
-	"production": {
+	"development": {
 		"username": "danchase801",
 		"password": "4674537Pn!",
 		"database": "postgres",
