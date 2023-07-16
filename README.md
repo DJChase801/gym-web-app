@@ -34,4 +34,5 @@ npm run start-local
 # start postgres server 
 pg_ctl -D /var/lib/pgsql/data -l logfile start
 
+cd server
 npx sequelize-cli db:migrate
