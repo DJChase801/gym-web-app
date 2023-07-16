@@ -30,3 +30,8 @@ cd to file with the 'main key.pem' file. I keep this in dir 'Documents/keys'
 ssh -i 'main key.pem'  ec2-user@34.226.247.19
 cd gym-web-app
 npm run start-local
+
+# start postgres server 
+pg_ctl -D /var/lib/pgsql/data -l logfile start
+
+npx sequelize-cli db:migrate
