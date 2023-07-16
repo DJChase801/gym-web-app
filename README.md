@@ -1,9 +1,9 @@
 *** clone instructions ***
 git clone https://github.com/DJChase801/gym-web-app.git
 cd gym-web-app
-yarn 
+yarn -or- npm install
 cd frontend 
-yarn
+yarn -or- npm install
 cd ..
 npm run start-local
 
@@ -23,3 +23,10 @@ cd frontend && npm run start
 
 *** stop the postgres server ***
 pg_ctl stop -D /Library/PostgreSQL/15/data
+
+
+*** Start On EC2 instance ***
+cd to file with the 'main key.pem' file. I keep this in dir 'Documents/keys'
+ssh -i 'main key.pem'  ec2-user@34.226.247.19
+cd gym-web-app
+npm run start-local
