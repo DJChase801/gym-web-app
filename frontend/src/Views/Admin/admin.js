@@ -33,13 +33,11 @@ function Admin() {
         await axios.get(`http://localhost:5000/api/get-all-purchases?startDate=${lastChargeDate}`).then((res) => {
             if (res.data.purchases) {
                 const tablePurchases = res.data.purchases.map((purchase) => {
-                    const total_amount = `$${purchase.total_amount}`
                     return {
                         key: purchase.member_id,
                         member_name: purchase.full_name,
-                        products: purchase.products.join(', '),
-                        total_amount,
-                        total_items: purchase.total_items,
+                        product: purchase.product,
+                        item_count: purchase.item_count,
                     }
                 });
                 setPurchases(tablePurchases);
@@ -69,14 +67,13 @@ function Admin() {
             // get request that sends the start date and end date as query params
             await axios.get(`http://localhost:5000/api/get-all-purchases?startDate=${formatStartDate}&endDate=${formatEndDate}`).then((res) => {
                 if (res.data.purchases) {
+                    setFilteredPurchases([]);
                     const tablePurchases = res.data.purchases.map((purchase) => {
-                        const total_amount = `$${purchase.total_amount}`
                         return {
                             key: purchase.member_id,
                             member_name: purchase.full_name,
-                            products: purchase.products.join(', '),
-                            total_amount,
-                            total_items: purchase.total_items,
+                            product: purchase.product,
+                            item_count: purchase.item_count,
                         }
                     });
                     setFilteredPurchases(tablePurchases);
@@ -177,10 +174,6 @@ function Admin() {
                         <div>
                             <h1>Purchases:</h1>
                         </div>
-                        <div className={'last-charge-when'}>
-                            <h4>Last Charge: {lastChargeDate}</h4>
-                            <button>Set New Charge Date</button>
-                        </div>
                         <div className={'purchase-header'}>
                             <h4>start date:</h4>
                             <input
@@ -219,20 +212,14 @@ function Admin() {
                                     key: 'full_name',
                                 },
                                 {
-                                    title: 'Products',
-                                    dataIndex: 'products',
-                                    key: 'products',
+                                    title: 'Product',
+                                    dataIndex: 'product',
+                                    key: 'product',
                                 },
                                 {
-                                    title: 'Total Items',
-                                    dataIndex: 'total_items',
-                                    key: 'total_items',
-                                    width: '150px'
-                                },
-                                {
-                                    title: 'Total Amount',
-                                    dataIndex: 'total_amount',
-                                    key: 'total_amount',
+                                    title: 'Item Count',
+                                    dataIndex: 'item_count',
+                                    key: 'item_count',
                                     width: '150px'
                                 },
                             ]}

@@ -42,21 +42,22 @@ export const processPurchase = async (
 interface Purchase {
     member_id: string;
     full_name: string;
-    total_amount: number;
-    total_items: number;
-    products: string[];
-    purchase_ids: string[];
+    product: string;
+    item_count: number;
 }
 
 
 export const getAllPurchases = async (startDate: any, endDate: any) => {
+    // member id to confirm duplicates
+    // get name 
+    // get product
+    // get count 
+    // where between start and end date
     const [purchase] = await sequelize.query(`
         SELECT m.member_id,
             m.full_name,
-            COUNT(p.product_id) AS total_items,
-            array_agg(p.name) AS products,
-            SUM(p.price) AS total_amount,
-            array_agg(pu.purchase_id) AS purchase_ids
+            p.name as product, 
+            COUNT(p.product_id) AS item_count
         FROM purchase pu
         LEFT JOIN member m ON pu.member_id = m.member_id
         LEFT JOIN product p ON pu.product_id = p.product_id
@@ -65,7 +66,7 @@ export const getAllPurchases = async (startDate: any, endDate: any) => {
         and m.deleted_at IS NULL
         ${(startDate && !endDate) ? `AND pu.created_at >= '${startDate}'` : ''}
         ${(startDate && endDate) ? `AND pu.created_at BETWEEN '${startDate}' AND '${endDate}'` : ''}
-        GROUP BY m.full_name, m.member_id
+        GROUP BY m.full_name, m.member_id, p.name
         ORDER BY m.full_name ASC;
     `) as Purchase[][];
 

@@ -40,13 +40,6 @@
     margin-bottom: 30px;
 }
 
-.last-charge-when {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    width: 350px;
-}
-
 .config-title {
     display: flex;
     flex-direction: row;

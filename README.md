@@ -1,9 +1,16 @@
-*** start the db server locally ***
+*** clone instructions ***
+git clone https://github.com/DJChase801/gym-web-app.git
+cd gym-web-app
+yarn 
+cd frontend 
+yarn
+cd ..
+npm run start-local
 
-# run the command below
+*** start the db server locally ***
 pg_ctl start -D /Library/PostgreSQL/15/data
 
-# If permission is denied set the access to you user with
+*** If permission is denied set the access to you user with ***
 sudo chown -R <username> /Library/PostgreSQL/15/data
 
 *** start the server ***
